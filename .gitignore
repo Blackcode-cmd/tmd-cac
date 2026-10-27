@@ -1,0 +1,23 @@
+# Keep the public documentation repository free of private working copies.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.pyc
+__pycache__/
+node_modules/
+.venv/
+venv/
+local/
+private/
+secrets/
+.credentials/
+reports/private/
+tests/chrome-*/
+*.zip
+*.tar.gz
+*.log
+*.tmp
