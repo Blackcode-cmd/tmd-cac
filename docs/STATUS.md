@@ -1,51 +1,55 @@
 # TMD-CAC status and verification
 
-**Evidence date: October 27, 2026.** This document distinguishes the saved account plugin, the tested local companion, and unverified behaviors.
+**Evidence date: October 28, 2026.** This document distinguishes the saved private ChatGPT plugin, tested local Prompt Lab, automated local preparation, and behaviors that remain unverified.
 
-## Current verified versions
+## Verified component versions
 
-| Area | Checked state |
+| Area | Current checked state |
 |---|---|
-| Account plugin | TMD-CAC v0.6.0, saved as a **private** ChatGPT account plugin |
-| Companion webpage | Local offline **Prompt Lab v0.6.1** on the authorized development laptop |
-| Public GitHub repository | Documentation-only public overview; not a mirror of private source code |
+| Account plugin | TMD-CAC **v0.6.0**, still a **private** ChatGPT user plugin |
+| Offline companion | Local **Prompt Lab v0.6.2**, with project preset and the third written Kai policy |
+| Local version control | Private local Git repository with a feature branch; no remote configured |
+| Public GitHub repository | Documentation-only overview, not a mirror of private source code |
 
-The offline companion is a self-contained HTML page launched from a desktop shortcut. It prepares draft prompt contracts locally; it does not perform LLM inference, external source retrieval, third-party communication, or downstream task execution.
+## Implemented local capabilities
 
-## Implemented companion behavior
+- Single-job form with objective, scope, deliverables, requirements and acceptance checks.
+- TMD-CAC project preset with builder label, operating roles, written project boundaries and a distinct Kai/tool-efficiency **proposal**, not live Grok permissions.
+- Up to 20 jobs through text/Markdown files, supported JSON job arrays, or a pasted prompt; 1 MiB per selected file and 5 MiB total input limits.
+- Selected-file list with per-file Remove, Remove all without wiping the pasted job, and Clear batch. Original files are not deleted.
+- Local redaction of common credential patterns, suspicious instruction flags, revision-sensitive drafts and distinct ChatGPT/Kai handoff packet formats.
+- **New local manifest preflight:** verifies source-file identity, byte/word counts, checksums, UTF-8, file count/limits and the existing heuristic scanner.
+- **New local offline composer:** takes a passing manifest, loads the actual TMD-CAC preset, and produces individual revision-bound **DRAFT** contracts, a builder packet, and a concise review index. Runs are deterministic and fail closed if an existing artifact has been altered.
+- Both tools operate locally and do not connect to ChatGPT, send data to Kai, or execute imported jobs.
 
-- Single-job form with objective, scope, requirements, deliverables and acceptance checks.
-- One-project batch handoff desk: up to 20 jobs, `.txt`, `.md` and constrained `.json` inputs; per-file limit 1 MiB, total selected files 5 MiB, prompt text limit 100,000 characters.
-- Shared builder label, written working perspectives and permission boundaries; the label does not choose a model in ChatGPT.
-- Local redaction of recognized credential patterns, suspicious-instruction flags, separate sanitized per-job drafts and optional human-mediated review packets.
-- Review invalidation after changed inputs; stable content-derived revision identifiers for sanitized batch drafts.
-- Local v0.6.1 selection UX: remove one file, remove all files without wiping the pasted job, and add selections incrementally. No original file is deleted.
-- Desktop and mobile-size responsive layout tests.
+## Verification evidence
 
-## Test evidence
-
-| Gate | Observed result | What it means |
+| Gate | Observed result | Scope |
 |---|---|---|
-| Batch core regression tests | **36/36 passed** | Local parsing, source bounds, redaction patterns and output invariants |
-| v0.6.1 browser suite, desktop viewport | **35/35 passed** | Includes selected-file removal and existing batch-flow checks |
-| v0.6.1 browser suite, mobile-size viewport | **35/35 passed** | Same automated checks at a small viewport |
+| Previous v0.6.2 core regression checks | 40/40 passed | Local batch parsing and output behavior |
+| Previous v0.6.2 browser desktop-size checks | 46/46 passed | Local UI harness |
+| Previous v0.6.2 browser mobile-size checks | 46/46 passed | Local UI harness at small viewport |
+| Current preflight on selected TMD-CAC jobs | 14/14 passed; zero findings | Exact selected source files, heuristic scan |
+| Preflight negative/positive regression assertions | 6 passed | Manifest tampering, project and file boundaries |
+| Composer regression assertions | 11 passed | Revision consistency, DRAFT states, reuse/tamper handling |
+| Automated draft generation | 14/14 draft contracts produced | Local deterministic drafting only |
 
-Browser checks are performed in an automated local browser, not equivalent to manual use on all systems. Secret detection is heuristic; a clean scan is not proof of privacy.
+The recorded browser checks are not a manual accessibility assessment. Local tests and static detection cannot establish prompt quality, privacy guarantees or host-model behavior.
 
-## Not yet established
+## Outstanding verification and restrictions
 
-- Full native ChatGPT behavioral testing of all T01–T22 scenarios.
-- Measured model quality advantage over a plain, equivalent baseline.
-- A direct authenticated integration with external reviewing models.
-- A public hosted TMD-CAC website.
-- A hardened standalone execution-permission service.
-- Host activation of the v0.6.1 local companion as a new account plugin release.
+- Full native ChatGPT T01–T22 model behavior and fair baseline quality comparisons are **not complete**.
+- This automation is an **offline draft composer**; semantic interpretation/validation requires the ChatGPT TMD-CAC skill in an available host.
+- Kai/Grok independent review is optional and remains **NOT SENT** until an actual approved handoff. Direct authenticated connector access is not established.
+- The local v0.6.2 companion and automated tools have **not** been released as a new private ChatGPT account plugin.
+- A hosted public website, hardened independent executor and autonomous downstream-job execution are **not implemented**.
+- The private source repository is separate from public documentation. No private prompt inputs, sources, local paths, secrets or generated packets are mirrored here.
 
-Do not infer these capabilities from a ZIP archive, prompt, saved private plugin, local UI or passing static tests. Verified status should be revised when independent evidence becomes available.
+## Recommended next checks
 
-## Next small milestones
+1. Review the generated builder packet in an authorized ChatGPT session and run semantic fidelity tests against a short baseline.
+2. Perform manual keyboard and screen-reader usability testing for the offline UI.
+3. Decide whether to package the tested local companion into the existing private plugin through a guarded versioned update.
+4. Add any genuine model-to-model integration only after supported tools, recipient scope and security gates are verified.
 
-1. Run equivalent baseline-versus-compiled task evaluations with actual ChatGPT skill use.
-2. Audit usability and accessibility with real operator feedback.
-3. Reconcile local v0.6.1 companion changes into the private plugin only through its own tested versioned update process.
-4. Consider additional integration infrastructure only for proven needs, with separate approvals.
+**Default TMD-CAC workflow remains:** compile → audit → present, not automatic execution of an imported job.
