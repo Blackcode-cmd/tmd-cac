@@ -28,16 +28,18 @@ The logical responsibilities are Intent Interpreter, Context & Authority Manager
 
 ## Verified development snapshot
 
-**As checked on October 27, 2026:**
+**As checked on October 28, 2026:**
 
-| Component | Version | Status |
+| Component | Version | Verified status |
 |---|---|---|
-| Private ChatGPT skill plugin | v0.6.0 | Saved as a private account plugin |
-| Offline local Prompt Lab | v0.6.1 | Local companion and desktop shortcut updated |
-| Batch core regression checks | 36/36 | Passed on the tested local source |
-| Prompt Lab browser checks | 35/35 desktop and 35/35 mobile-size | Passed for local v0.6.1 |
+| Private ChatGPT skill plugin | v0.6.0 | Saved account plugin; not updated by local source changes |
+| Offline local Prompt Lab | v0.6.2 | Project preset, bounded reviewer policy, file selection/removal, and single/batch draft workflow |
+| Local Git source history | Private local repository | Versioned working branch and a tested automation implementation; no remote configured |
+| Prompt selection preflight | Local tool | 14/14 selected jobs accepted with zero scanner warnings |
+| Offline draft composer | Local tool | 14 versioned draft contracts prepared; 11 composer assertions passed |
+| Batch-core / browser regression | Local v0.6.2 | 40 core checks and 46 checks at each desktop/mobile-size viewport recorded as passed |
 
-The local v0.6.1 companion adds individual file removal, remove-all while preserving pasted input, and additive file selection. Removing a file from its selection does not delete the original on disk.
+The local preflight checks source hashes, input limits and common risk patterns. The offline composer can then generate a reviewable, versioned builder packet without opening a model connection or executing imported jobs. This is **automated prompt preparation**, not an independently verified fully autonomous AI task executor. A semantic review in ChatGPT and an optional separately authorized independent review remain distinct stages.
 
 These checks **do not** establish full native ChatGPT host behavior, end-to-end model-quality improvement, or a complete T01–T22 evaluation. See [verified status](docs/STATUS.md).
 
